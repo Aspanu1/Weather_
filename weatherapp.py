@@ -22,7 +22,7 @@ def get_seven_days():
         list.append(tomorrow)
 
     return list
-    
+    #adddasdad
 
 
 class MainWindow(QWidget):
