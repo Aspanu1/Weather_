@@ -1,9 +1,27 @@
 import requests
+import socket
+
 
 
 base_url_weather = "https://api.open-meteo.com/v1/"
 base_url_geo = "https://geocoding-api.open-meteo.com/v1/"
+base_url_IP = "http://ip-api.com/json/"
 
+
+def get_ip_location():
+    IP = requests.get('https://api.ipify.org').text
+    
+    url = f"{base_url_IP}{IP}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        city = data['city']
+        print(city)
+        return city
+    else:
+        print("IP API FAILED")
+
+get_ip_location()
 
 def main_weather(city):
 
@@ -42,7 +60,7 @@ def main_weather(city):
 
         if response.status_code == 200:
             weather_forecast = response.json()
-
+            
             return weather_forecast
         else:
             print("DEBUG: FAILED")
