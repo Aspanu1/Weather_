@@ -1,4 +1,3 @@
-import time
 import requests
 
 
@@ -35,10 +34,9 @@ def main_weather(city):
     def get_weather_info():
         latitude = get_latitude()
         longtitude = get_longitude()
-        time_interval = "hourly"
-        temp = "temperature_2m"
+        
 
-        url = f"{base_url_weather}forecast?latitude={latitude}&longitude={longtitude}&{time_interval}={temp}"
+        url = f"{base_url_weather}forecast?latitude={latitude}&longitude={longtitude}&hourly=temperature_2m,relative_humidity_2m,precipitation,surface_pressure,cloud_cover,visibility,wind_speed_10m"
         response = requests.get(url)
         
 
